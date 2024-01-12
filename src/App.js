@@ -1,24 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
 
+import './App.css';
+import CourseList from './features/course/CourseList';
+import { useEffect, useState } from 'react';
+import { getAllCourses } from './features/course/courseApi';
+
+ 
 function App() {
+  let [arr,setArr]=useState([]);
+  useEffect(()=>{
+      getAllCourses().then(res => {
+           setArr(res.data);
+           }).catch(err => {
+           alert("לא יכול להביא את כל הקורסים")})
+          } ,[])
+  const removeFromArr=(_id) =>{
+  
+ setArr(arr.filter((item =>item._id !=  _id)))
+}  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+ <CourseList  course={{arr,removeFromArr}}/>
+
+    </>
   );
 }
 
