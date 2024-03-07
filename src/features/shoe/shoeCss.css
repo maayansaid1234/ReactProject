@@ -1,0 +1,33 @@
+
+  
+  /* סגנון לרכיב ה-Shoe */
+  #shoe-details {
+    position: sticky;
+    top: 0;
+    background-color: #d3cad4; /* אפשר לשנות לצבע שתרצה */
+    padding: 10px;
+    color: rgb(29, 5, 80);
+    z-index: 900;
+    height: 100vh;
+ 
+    display: flex;
+  }
+  #divImg{
+margin: auto;
+flex:1;
+
+  }
+  #details{
+margin-top: 10vh;
+flex:4;
+  }
+
+
+body,html{
+  /* background-color: #d3cad4; */
+}
+
+
+  
+
+  

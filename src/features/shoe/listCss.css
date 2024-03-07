@@ -1,0 +1,37 @@
+ul{
+    list-style-type:none;
+}
+#container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 7px;
+    row-gap: 10px;
+    
+
+}
+#divNextPreviousPage{
+    display: flex;
+    width:40%;
+    margin: 1% 48%;
+    column-gap: 15%;
+  
+}
+
+#divAllShoes{
+  
+    max-height: 70vh;
+    overflow-x: auto;
+}
+@media only screen and (max-width: 1000px) {
+  
+    /* .submits{
+     width: 15vw;
+     font-size:large;
+    } */
+
+    #divAllShoes{
+        max-height: 35vh;
+     
+    }
+  
+  }

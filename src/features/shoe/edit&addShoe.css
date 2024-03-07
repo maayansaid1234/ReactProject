@@ -1,0 +1,36 @@
+
+.inputs{
+    height:5vh;
+    background-color:darkcyan;
+    color: antiquewhite;
+}
+
+#div_buttons{
+display: flex;
+column-gap: 5vw;
+margin-bottom:5vh ;
+}
+
+
+#addShoe,#editShoe{
+    overflow-y: auto;
+     height: 85vh;
+  
+    padding: 16px
+}
+
+
+@media only screen and (max-width: 1000px) {
+  
+
+    #addShoe{
+        height: 50vh;
+        
+     
+    }
+  
+    #editShoe{
+        height: 50vh;
+     
+    }
+  }

@@ -1,0 +1,36 @@
+/* #ulBasket{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 7px;
+    row-gap: 10px;
+    
+} */
+
+
+  /* ul{
+    list-style-type: none;
+ 
+  } */
+
+  #divBasket{
+    overflow-x: auto;
+    max-height: 70vh;
+  }
+
+  @media only screen and (max-width: 1000px) {
+  
+   
+
+    #divBasket{
+        max-height: 40vh;
+     
+    }
+  
+  }
+
+
+
+
+
+  
+

@@ -1,0 +1,49 @@
+
+  
+
+    #ulNavBar {
+        /* align-self: center; */
+        /* width:70%; */
+        list-style-type: none;
+        display: flex;
+        flex-direction: row;
+        direction: rtl;
+    
+      
+       /* width: 99vw; */
+        /* margin: auto; */
+        /* column-gap: 10vw; */
+        /* background-color:rgb(196, 233, 233); */
+    }
+    
+    .lis{ 
+     color:beige;
+     text-align: center;
+    /* margin-right: 10vw; */
+    background-color:salmon;
+    /* background-color:palevioletred; */
+    padding: 15px;
+    height:5vh ;
+    /* width:30%;  */
+  
+
+    }
+    .active{
+        color: rgb(22, 10, 251);
+        font-size: larger;
+         font-weight: bolder;
+        
+        }
+    .not-active{
+        color:beige;
+        font-size: larger;
+        font-weight: bolder;
+    }
+.rlt{
+    direction:ltr;
+}
+
+
+
+    
+ 
