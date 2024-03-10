@@ -9,7 +9,8 @@ import ArrowForwardIosTwoToneIcon from '@mui/icons-material/ArrowForwardIosTwoTo
 import ArrowBackIosTwoToneIcon from '@mui/icons-material/ArrowBackIosTwoTone';
 import { Select, MenuItem, InputLabel, FormControl } from '@mui/material';
 import { Button } from "semantic-ui-react";
-
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const List = () => {
     
@@ -29,7 +30,26 @@ const List = () => {
             setFinalPage(amountOfPages);
         } catch (err) {
             console.error(err);
-            alert("לא הצליח להביא נתונים");
+            toast.error(' ! הפעולה נכשלה ', {
+                position: 'top-center',
+                autoClose: 2000, // מספר המילישני שתוצג ההתראה
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+              }); 
+               console.log(err)
+               toast.error(err.response?.data?.message, {
+                position: 'top-center',
+                autoClose: 3000, // מספר המילישני שתוצג ההתראה
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+              }); 
+           
         }
     };
 

@@ -1,5 +1,8 @@
+import { Button } from "@mui/material";
 import { updateOrder } from "./orderApi";
 import { useSelector } from "react-redux";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ListItem = ({item,fetchData}) => 
 {
@@ -9,18 +12,45 @@ const ListItem = ({item,fetchData}) =>
    {
     try{
          let res=updateOrder(item._id,{isDone:true},token);
-         alert("ההזמנה יצאה לדרך")
+         toast.success(' ! ההזמנה יצאה לדרך ', {
+            position: 'top-center',
+            autoClose: 3000, // מספר המילישני שתוצג ההתראה
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          }); 
+       
          fetchData()
     }
     catch(err){
-        alert(err.message)
+        toast.error(' ! שליחת ההזמנה נכשלה ', {
+            position: 'top-center',
+            autoClose: 2000, // מספר המילישני שתוצג ההתראה
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          }); 
+           console.log(err)
+           toast.error(err.response?.data?.message, {
+            position: 'top-center',
+            autoClose: 5000, // מספר המילישני שתוצג ההתראה
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          }); 
     }
    
 
     }
     return (  <>
-    <div style={{background:"rgb(50, 50, 50)","border":"4px black",color:"white"
-    , boxShadow: "0 0 18px 0px black", height: '100%' }}>
+    <div style={{background:"beige","border":"4px black"
+    , boxShadow: "0 0 10px 0px black", height: '100%' }}>
         <h3> {item._id} : קוד הזמנה</h3>
         <h4>{item.userId} : קוד מזמין </h4>
         <h4>{item.address} : כתובת</h4>
@@ -34,9 +64,9 @@ const ListItem = ({item,fetchData}) =>
     month: 'long',
     day: 'numeric',
   })} : תאריך יעד </h4>
-        {/* <h3>{String(item.isDone)}</h3> */}
+     
        
-        {!(item.isDone)&&<button onClick={sendOrder}>שלח הזמנה</button>}
+        {!(item.isDone)&&<Button variant="contained" color="inherit" onClick={sendOrder}>שלח הזמנה</Button>}
     
 
     </div>

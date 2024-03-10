@@ -5,8 +5,9 @@ import { addOrder } from "./orderApi";
 import { TextField } from "@mui/material";
 import { useForm } from "react-hook-form";
 import { Button } from "semantic-ui-react";
-
-
+import { resetBasket } from "./orderSlice";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const OrderForm = () => {
 let navigate=useNavigate()
@@ -20,10 +21,41 @@ let {register,handleSubmit,formState:{errors,isValid}}=useForm({mode:"onSubmit",
     const save=(data)=>{
     if(isValid)
     {
+        dispatch(saveOrderDetails(data)) ;
         addOrder({...data,products:basket},userToken).then(res => {           
-               dispatch(saveOrderDetails(res.data))  ; alert("הזמנה נוספה בהצלחה!");  navigate("/shoes")
+               dispatch(resetBasket());
+               toast.success(' ! ההזמנה נשלחה בהצלחה ', {
+                position: 'top-center',
+                autoClose: 3000, // מספר המילישני שתוצג ההתראה
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+              }); 
+              setTimeout(()=>{navigate("/shoes")},4000)
+                 
               }).catch((err)=> {
-                       alert(JSON.stringify(err.response.data))
+                toast.error(' ארעה שגיאה ', {
+                    position: 'top-center',
+                    autoClose: 2000, // מספר המילישני שתוצג ההתראה
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                  }); 
+                  toast.error( err.response?.data?.message, {
+                    position: 'top-center',
+                    autoClose: 3000, // מספר המילישני שתוצג ההתראה
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                  }); 
+                 
+    
                      console.log(JSON.stringify(err.response.data)) })
             
     }   
@@ -31,7 +63,8 @@ let {register,handleSubmit,formState:{errors,isValid}}=useForm({mode:"onSubmit",
    const saveOrderDetailsInState=(data)=>{   
     
     dispatch(saveOrderDetails({...data}))  
-    navigate("/shoes")}
+    navigate("/shoes")
+}
    
     
     

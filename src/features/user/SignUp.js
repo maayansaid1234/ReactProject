@@ -11,11 +11,15 @@ import IconButton from '@mui/material/IconButton';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { useState } from "react";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const SignUp = () => {
     let dispatch=useDispatch();
     let navigate=useNavigate();
+    let [showLoading, setShowLoading] = useState(false);
+
     const [showPassword, setShowPassword] = useState(false);
 
     const handleClickShowPassword = () => {
@@ -26,16 +30,31 @@ const SignUp = () => {
       
      if(isValid)
     {
+      setShowLoading(true);
         addUser(data).then(res => {           
                      dispatch(saveUser(res.data));navigate("/shoes")
               }).catch((err)=> {
-                       alert(JSON.stringify(err.response.data))
+                setShowLoading(false)
+                toast.error(err.response?.data?.message, {
+                  position: 'top-center',
+                  autoClose: 5000, // מספר המילישני שתוצג ההתראה
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: true,
+                  draggable: true,
+                  progress: undefined,
+                }); 
                      console.log(JSON.stringify(err.response.data)) })
             
     }   
    }
 
-    return ( <><h2> ! ברוך הבא משתמש חדש </h2><form onSubmit={handleSubmit(save)} noValidate>
+    return ( <>
+    {showLoading&&(<h1 style={{marginTop:"20px"  }}> ... אנא המתן</h1>)}
+    {showLoading&&<Button  loading></Button>}
+    {!showLoading&&<div>
+    <h2 style={{marginTop:"20px"  }}> ! ברוך הבא משתמש חדש </h2>
+    <form onSubmit={handleSubmit(save)} noValidate>
         <TextField
   placeholder="אימייל"
   {...register("email", {
@@ -70,7 +89,7 @@ const SignUp = () => {
 
 <Button type="submit"  colored color="blue"> להרשמה</Button>
     </form>
-   
+    </div>}
     </> );
 }
  

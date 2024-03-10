@@ -5,6 +5,8 @@ import ListItem from "./ListItem";
 import { Grid, Paper } from "@mui/material";
 import "./allOrders.css"
 import { Button } from "semantic-ui-react";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const AllOrders = () => {
   const [arr, setArr] = useState([]);
@@ -17,7 +19,26 @@ const AllOrders = () => {
       let res = await getAllOrders(token);
       setArr(res.data);
     } catch (err) {
-      alert(err.response.data.message);
+      toast.error(' ארעה שגיאה ', {
+        position: 'top-center',
+        autoClose: 2000, // מספר המילישני שתוצג ההתראה
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      }); 
+      toast.error(err.response?.data?.message
+        , {
+        position: 'top-center',
+        autoClose: 3000, // מספר המילישני שתוצג ההתראה
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      }); 
+      
     }
   };
 
@@ -29,17 +50,7 @@ const AllOrders = () => {
     <>
       <h1> כל ההזמנות</h1>
       <div id="allOrders"
-       /*
-        style={{
-          overflowX: "auto",
-          maxHeight: "48.5vh",
-          width: "100vw",
-          margin: "auto",
-          backgroundColor: "beige",
-          "@media (max-width: 600px)": {
-            maxHeight: "10vh", // Adjust for smaller screens
-          },
-        }}  */
+     
       >
         <Grid container spacing={2} sx={{ width: "100%", minHeight: "100%" }}>
           {arr &&
@@ -70,7 +81,9 @@ const AllOrders = () => {
             ))}
         </Grid>
       </div>
-      {arr.length==0&&<Button primary loading></Button>}
+      {arr.length==0&&<Button color="black" loading></Button>}
+    
+      
     </>
   );
 };

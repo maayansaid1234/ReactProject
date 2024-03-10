@@ -1,5 +1,6 @@
 import './App.css';
 import 'semantic-ui-css/semantic.min.css';
+import { ToastContainer } from 'react-toastify';
 import List from './features/shoe/List';
 import {  useDispatch } from 'react-redux';
 import { Route,Routes, useNavigate} from 'react-router-dom';
@@ -13,8 +14,8 @@ import OrderForm from './features/order/OrderForm';
 import EditShoeForm from "./features/shoe/EditShoe";
 import AllOrders from './features/order/AllOrders';
 import AddShoe from "./features/shoe/AddShoe"
-import { useEffect } from 'react';
-
+import ProtectedRouteForManager from './protectedRoutes/ProtectedRouteForManager';
+import ProtectedRouteForUser from './protectedRoutes/ProtectedRouteForUser';
 
 function App() {
   let navigate=useNavigate();
@@ -29,36 +30,62 @@ function App() {
   return (
    
     <div className="App">
- 
-      <NavBar/>  
+   
+     <ToastContainer />
+
+       <NavBar/>  
        
-     <Routes> 
+      <Routes> 
 
       <Route path='shoes'  element={<List/>}> 
       <Route path="shoe/:_id"  element={<Shoe/>} />
-      </Route>
+       </Route>
 
 
-      <Route path='allOrders'  element={<AllOrders/>}/>
+     <Route path='allOrders'  element={
+      <ProtectedRouteForManager>
+      <AllOrders/>
+      </ProtectedRouteForManager>}  />
+    
       
-      <Route path="basket"  element={<Basket/>} />
+    <Route path="basket"  element={<Basket/>} />
     
       <Route path="login"  element={<Login/>} />
 
-      <Route path="signUp"  element={<SignUp/>} />
+     <Route path="signUp"  element={<SignUp/>} />
 
-      <Route path="addShoe"  element={<AddShoe/>} />
+      <Route path="addShoe"  element={
+        <ProtectedRouteForManager>
+          <AddShoe/>
+        </ProtectedRouteForManager>
+      
+      } />
 
-      <Route path="orderForm"  element={<OrderForm/>} />
+      <Route path="orderForm"  element={
+        <ProtectedRouteForUser>
+        <OrderForm/>
+        </ProtectedRouteForUser>
+       } />
+
+      
      
-      <Route path="editShoe" element={<EditShoeForm />} />
+       <Route path="editShoe" element={
+        <ProtectedRouteForManager>
+           <EditShoeForm />
+        </ProtectedRouteForManager>   } />
+
+      <Route path="/" element={
+        <List/>
+      }/>
+    
 
 
 
 
     </Routes>
 
-    </div>
+     </div>
+   
   );
 }
 

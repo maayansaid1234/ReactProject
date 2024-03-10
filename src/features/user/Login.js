@@ -11,12 +11,14 @@ import IconButton from '@mui/material/IconButton';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { Button } from "semantic-ui-react";
-
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Login = () => {
     let dispatch=useDispatch();
     let navigate=useNavigate();
+    let [showLoading, setShowLoading] = useState(false);
     const [showPassword, setShowPassword] = useState(false);
     const handleClickShowPassword = () => {
       setShowPassword(!showPassword);
@@ -25,17 +27,40 @@ const Login = () => {
     const save=(data)=>{
     if(isValid)
     {
+      setShowLoading(true);
         login(data).then(res => {           
                      dispatch(saveUser(res.data));navigate("/shoes")
               }).catch((err)=> {
-                       alert(JSON.stringify(err.message))
+                setShowLoading(false)
+                toast.error('הפעולה נכשלה', {
+                  position: 'top-center',
+                  autoClose: 2000, // מספר המילישני שתוצג ההתראה
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: true,
+                  draggable: true,
+                  progress: undefined,
+                }); 
+                toast.error(err.response?.data?.message, {
+                  position: 'top-center',
+                  autoClose: 5000, // מספר המילישני שתוצג ההתראה
+                  hideProgressBar: false,
+                  closeOnClick: true,
+                  pauseOnHover: true,
+                  draggable: true,
+                  progress: undefined,
+                }); 
                      console.log(JSON.stringify(err.message)) })
             
     }   
    }
  
 
-    return ( <><h2> ! ברוכים השבים אלינו</h2>
+    return ( <>
+    {showLoading&&(<h1 style={{marginTop:"20px"  }}> ... אנא המתן</h1>)}
+    {showLoading&&<Button  loading></Button>}
+   {!showLoading&&<div>
+ <h2 style={{marginTop:"20px"  }}> ! ברוכים השבים אלינו</h2>
     <form onSubmit={handleSubmit(save)} noValidate>
     <TextField
   placeholder="אימייל"
@@ -66,6 +91,7 @@ const Login = () => {
     <b>
     <div>משתמש חדש? <Link style={{color:"blue",fontWeight:"bold"}}  to="/signUp" > לחץ כאן להרשמה</Link> </div>
     </b>
+    </div>}
     </> );
 }
  

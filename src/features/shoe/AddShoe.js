@@ -6,6 +6,9 @@ import { TextField, Typography } from '@mui/material';
 import { useSelector } from 'react-redux';
 import { Button } from 'semantic-ui-react';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 function AddShoe() {
    const navigate=useNavigate();
@@ -23,12 +26,37 @@ function AddShoe() {
         }
         newObj.price = Number(newObj.price);
         let res = await addShoe(newObj, token);
-        alert("נעל הוספה בהצלחה!");
+        toast.success(' ! הנעל נוספה בהצלחה ', {
+          position: 'top-center',
+          autoClose: 3000, // מספר המילישני שתוצג ההתראה
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        }); 
         console.log(res);
       } catch (err) {
-        alert("לא הצליח להוסיף");
+        toast.error(' ! הפעולה נכשלה ', {
+          position: 'top-center',
+          autoClose: 2000, // מספר המילישני שתוצג ההתראה
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        }); 
         console.log(err);
-        alert(err.response.data.message);
+        toast.error(err.response.data.message, {
+          position: 'top-center',
+          autoClose: 3000, // מספר המילישני שתוצג ההתראה
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        }); 
+      
       } finally {
         reset();
       }

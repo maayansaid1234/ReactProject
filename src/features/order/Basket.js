@@ -30,11 +30,16 @@ const Basket = () => {
     <>
       {arr.length > 0 && (
         <div>
-          <h1>סל הקניות שלי</h1>
+          <h1 style={{marginTop:"10px"  }}>סל הקניות שלי</h1>
           <div  id="divBasket" /* style={{ overflowX: 'auto',  maxHeight: "40vh",}}*/>
                 <Grid container spacing={2} sx={{ width: '100%', minHeight: '100%' }}>
                     {arr && arr.length > 0 && arr.map(item => (
-                        <Grid item key={item._id} xs={12} sm={6} md={4} lg={4} style={{ minWidth: '200px' }}>
+                        <Grid item key={item._id} xs={12} sm={6}
+                        //  md={4} 
+                        //  lg={4} 
+                         md={6} // Change this to 6 for two items per row
+                         lg={6} // Change this to 6 for two items per row
+                         style={{ minWidth: '200px' }}>
                             <Paper elevation={3} style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
                                 <div style={{ flex: 1 }}>
                                 <ShoeInBasket one={item} />
@@ -45,8 +50,8 @@ const Basket = () => {
                 </Grid>
             </div>
          
-          <div style={{ fontWeight: "bold" }}>סך הכל לתשלום: {sum()}</div>
-          <div style={{ fontWeight: "bold" }}>סך הכל מוצרים: {sumQty()}</div>
+          <div style={{ fontWeight: "bold",fontSize:"large" ,marginBottom:"2vh",marginTop:"2vh"  }}>₪ סך הכל לתשלום: {sum()} </div>
+          <div style={{ fontWeight: "bold",fontSize:"large" ,marginBottom:"2vh"}}>סך הכל מוצרים: {sumQty()}</div>
 
           <div className="basket-buttons">
             <Button  color="success" variant="contained" 
@@ -57,7 +62,7 @@ const Basket = () => {
             >
               סיום
             </Button>
-            <Button  color="success" variant ="text"onClick={() => navigate("/shoes")}>חזרה לחנות</Button>
+            <Button  color="success" variant ="text" onClick={() => navigate("/shoes")}>חזרה לחנות</Button>
           </div>
         </div>
       )}

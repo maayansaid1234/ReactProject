@@ -3,8 +3,9 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 import ArrowForwardTwoToneIcon from '@mui/icons-material/ArrowForwardTwoTone';
 import { useEffect, useRef, useState } from "react";
 import "./shoeCss.css"
-import AddToBasket from "./AddToBasket";
-
+import AddToBasket from "../order/AddToBasket";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const Shoe = () => {
    
@@ -27,7 +28,25 @@ export const Shoe = () => {
            
         } catch (err) {
             console.error(err);
-            alert("לא הצליח להביא נתונים");
+            toast.error(' ! הפעולה נכשלה ', {
+              position: 'top-center',
+              autoClose: 2000, // מספר המילישני שתוצג ההתראה
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            }); 
+             console.log(err)
+             toast.error(err.response?.data?.message, {
+              position: 'top-center',
+              autoClose: 3000, // מספר המילישני שתוצג ההתראה
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+            }); 
         }
     }
     useEffect(()=>{

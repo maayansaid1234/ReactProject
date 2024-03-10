@@ -47,7 +47,7 @@ if(amountInput.current){
         {(user==null||user.role=="USER")&& <div>
      
       {shoeInBasket.length==1&&
-     <Icon name="trash alternate" color="grey" size="large" onMouseOver={(e)=>{e.target.size="big"}} onClick={(e)=>{dispatch(removeFromBasket(one._id));/*amountInput.current.value=(1)*/}}/>}
+     <Icon name="trash alternate outline" color="black" size="big" onMouseOver={(e)=>{e.target.size="big"}} onClick={(e)=>{dispatch(removeFromBasket(one._id));/*amountInput.current.value=(1)*/}}/>}
      {shoeInBasket.length==0&& 
      <AddShoppingCartRoundedIcon fontSize="large" onClick={() => { 
          choosingAmountDiv.current.style.display="block";}} />}

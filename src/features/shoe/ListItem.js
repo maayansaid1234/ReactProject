@@ -3,8 +3,9 @@ import { deleteShoe } from "./shoeApi";
 import { React} from "react";
 import { useNavigate } from "react-router-dom";
 import { Button} from "semantic-ui-react";
-import AddToBasket from "./AddToBasket";
-
+import AddToBasket from "../order/AddToBasket";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 
@@ -28,15 +29,42 @@ const ListItem = ({ one,fetchData }) =>
      
       try {
         let res = await deleteShoe(one._id,userToken)
-        alert("מחיקה הצליחה")
+  
+         toast.success( '! הנעל נמחקה בהצלחה', {
+          position: 'top-center',
+          autoClose: 3000, // מספר המילישני שתוצג ההתראה
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        }); 
         fetchData();
       
        
     
     } catch (err) {
-         alert("שגיאה במחיקה")
        
-        alert(err?.response?.data?.message)
+         toast.error(' ! המחיקה נכשלה ', {
+          position: 'top-center',
+          autoClose: 2000, // מספר המילישני שתוצג ההתראה
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        }); 
+         console.log(err)
+         toast.error(err.response?.data?.message, {
+          position: 'top-center',
+          autoClose: 5000, // מספר המילישני שתוצג ההתראה
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        }); 
+        
         console.log(err)
     }
     } 
@@ -64,8 +92,8 @@ const ListItem = ({ one,fetchData }) =>
        <AddToBasket one={one}/>
             { user&&user.role=="ADMIN" &&
             <>
-  <Button basic color="olive" onClick={() => {navigate(`/editShoe`, { state: { item: one } });}}>לעריכה</Button> 
-  <Button basic color="brown" onClick={ handleDelete   }>מחק</Button>
+  <Button  style={{backgroundColor:"paleturquoise",color:"black"}}  size="small" onClick={() => {navigate(`/editShoe`, { state: { item: one } });}}>לעריכה</Button> 
+  <Button style={{backgroundColor:"#800080",color:"white"}} size="small" onClick={ handleDelete   }>מחק</Button>
   
   </> }   
 
