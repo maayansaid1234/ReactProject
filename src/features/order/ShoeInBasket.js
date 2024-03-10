@@ -34,7 +34,10 @@ useEffect(()=>{
              }}>לשינוי כמות</Button> 
 
              <div style={{display:"none" }}ref={choosingAmountDiv}>
-                <Button /*style={{backgroundColor:"palevioletred"}}*/  color="success"  variant="contained" onClick={()=>{ 
+                <Button style={{color:"palevioletred",backgroundColor:"beige"}}  variant="contained" onClick={()=>{ 
+                  if(amountInput.current.value==0)
+                  dispatch(removeFromBasket(one._id))
+                else
                      dispatch(updateShoeInBasket
                       ({...one,amount:amountInput.current.value}))
              ; choosingAmountDiv.current.style.display="none";  }} >אישור</Button>

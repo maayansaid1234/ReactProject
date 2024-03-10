@@ -30,7 +30,7 @@ const Basket = () => {
     <>
       {arr.length > 0 && (
         <div>
-          <h1 style={{marginTop:"10px"  }}>סל הקניות שלי</h1>
+          <h1 style={{marginTop:"10px"}}>סל הקניות שלי</h1>
           <div  id="divBasket" /* style={{ overflowX: 'auto',  maxHeight: "40vh",}}*/>
                 <Grid container spacing={2} sx={{ width: '100%', minHeight: '100%' }}>
                     {arr && arr.length > 0 && arr.map(item => (

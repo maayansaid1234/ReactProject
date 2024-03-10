@@ -67,8 +67,12 @@ if(amountInput.current){
                   setTimeout(()=>{ setShowBasket(false)},6000)
                 }  }>הוסף לסל</Button> }
 
-            {shoeInBasket.length==1&& <Button size="tiny" colored color="white"
+            {shoeInBasket.length==1&&
+             <Button size="tiny" style={{backgroundColor:"beige",color:"black",fontWeight:"bold"}}
              onClick={()=>{ 
+              if (amountInput.current.value==0)
+              dispatch(removeFromBasket(one._id))
+              else
                    dispatch(updateShoeInBasket({...one,amount:amountInput.current.value}))  ;
                    choosingAmountDiv.current.style.display="none";
                   setShowBasket(true)
