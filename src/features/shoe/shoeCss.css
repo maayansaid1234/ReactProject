@@ -22,10 +22,16 @@ margin-top: 10vh;
 flex:4;
   }
 
+  @media only screen and (max-width: 1000px) {
+  
 
-body,html{
-  /* background-color: #d3cad4; */
-}
+    #details{
+      margin-top: 0vh;
+      flex:4;
+    
+        }
+  
+  }
 
 
   

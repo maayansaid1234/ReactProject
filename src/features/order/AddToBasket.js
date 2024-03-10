@@ -44,8 +44,10 @@ if(amountInput.current){
 
        return (
         <>
-        {(user==null||user.role=="USER")&& <div>
-     
+        {(user==null||user.role=="USER")&& <div
+        className={shoeInBasket.length==1?"basket":"notBasket"}
+        >
+        
       {shoeInBasket.length==1&&
      <Icon name="trash alternate outline" color="black" size="big" onMouseOver={(e)=>{e.target.size="big"}} onClick={(e)=>{dispatch(removeFromBasket(one._id));/*amountInput.current.value=(1)*/}}/>}
      {shoeInBasket.length==0&& 

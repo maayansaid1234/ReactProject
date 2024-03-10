@@ -66,7 +66,7 @@ const List = () => {
        
         <div>
              <Outlet />
-            <h1>רשימת המוצרים</h1>
+            <h1 style={{marginTop:"1vh"}}>הנעליים שלנו</h1>
 
             <FormControl style={{width:"15%",marginBottom:"1vh"}} >
                 <InputLabel style={{fontSize:"17px",width:"120%",color:"blue"
