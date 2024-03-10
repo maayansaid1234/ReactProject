@@ -45,7 +45,7 @@ if(amountInput.current){
        return (
         <>
         {(user==null||user.role=="USER")&& <div
-        className={shoeInBasket.length==1?"basket":"notBasket"}
+        
         >
         
       {shoeInBasket.length==1&&
