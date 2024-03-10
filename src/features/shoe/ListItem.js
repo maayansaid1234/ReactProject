@@ -18,7 +18,7 @@ const ListItem = ({ one,fetchData }) =>
   let userToken=useSelector(st=>st.user.currentUser)?.token
   let user=useSelector(st=>st.user.currentUser)
  
-
+// let shoeInBasket=useSelector(st=>st.order.basket)
 
 
 
@@ -75,7 +75,8 @@ const ListItem = ({ one,fetchData }) =>
      return (<>
       
 
-      <div style={{backgroundColor:""}}>  
+      <div>
+      {/* <div className={shoeInBasket.length >= 1 ? "basket" : "notBasket"}> */}
         <img onClick={(e)=>
         {navigate("shoe/"+one._id , 
         { state: { item: one } })}} src={one.src} 
