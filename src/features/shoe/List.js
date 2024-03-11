@@ -84,7 +84,7 @@ const List = () => {
                 </Select>
             </FormControl>
 
-            <div  id="divAllShoes" 
+            <div  id="divAllShoes" style={{padding:"1vh "}}
              >
                 <Grid container spacing={2} sx={{ width: 'fit-content', minHeight: '100%' }}>
                     {arr && arr.length > 0 && arr.map(item => (
@@ -101,15 +101,15 @@ const List = () => {
 
             <div id="divNextPreviousPage">
                 <div>
-                    {page > 1 && <ArrowBackIosTwoToneIcon onClick={() => setPage(p => p - 1)} />}
+                    {page > 1 && <ArrowBackIosTwoToneIcon  onClick={() => setPage(p => p - 1)} />}
                 </div>
                 <div>
                     {(arr.length > 1 && page < finalPage) && <ArrowForwardIosTwoToneIcon onClick={() => setPage(p => p + 1)} />}
                 </div>
             </div>
 
-        {arr.length==0&&<Button primary loading></Button>}
-     
+        
+            {arr.length==0&&<Button primary loading></Button>}
         </div>
 
     );

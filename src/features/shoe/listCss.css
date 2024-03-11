@@ -19,7 +19,7 @@ ul{
 
 #divAllShoes{
   
-    max-height: 68vh;
+    max-height: 67vh;
     overflow-x: auto;
     /* color: paleturquoise; */
 }
@@ -31,7 +31,7 @@ ul{
     } */
 
     #divAllShoes{
-        max-height: 35vh;
+        max-height: 34vh;
      
     }
   
