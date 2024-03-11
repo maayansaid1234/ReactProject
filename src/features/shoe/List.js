@@ -89,11 +89,11 @@ const List = () => {
 
             <div  id="divAllShoes" style={{padding:"1vh "}}
              >
-                <Grid container spacing={2} sx={{ width: 'fit-content', minHeight: '100%' }}>
+                <Grid container spacing={2} sx={{ width: '100%', minHeight: '100%' }}>
                     {arr && arr.length > 0 && arr.map(item => (
                         <Grid item key={item._id} xs={12} sm={6} md={4} lg={4} style={{ minWidth: '200px' }}>
                             <Paper elevation={3} style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
-                                <div style={{ flex: 1 }}>
+                                <div style={{ flex: 1}}>
                                     <ListItem one={item}   fetchData={fetchData} />
                                 </div>
                             </Paper>

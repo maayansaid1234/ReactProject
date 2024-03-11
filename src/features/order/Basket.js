@@ -35,8 +35,7 @@ const Basket = () => {
                 <Grid container spacing={2} sx={{ width: '100%', minHeight: '100%' }}>
                     {arr && arr.length > 0 && arr.map(item => (
                         <Grid item key={item._id} xs={12} sm={6}
-                        //  md={4} 
-                        //  lg={4} 
+                       
                          md={6} // Change this to 6 for two items per row
                          lg={6} // Change this to 6 for two items per row
                          style={{ minWidth: '200px' }}>

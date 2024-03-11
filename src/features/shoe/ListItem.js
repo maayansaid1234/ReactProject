@@ -75,7 +75,7 @@ const ListItem = ({ one,fetchData }) =>
      return (<>
       
 
-      <div style={{padding:"3vh"}}>
+      <div style={{paddingTop:"3vh"}}>
       {/* <div className={shoeInBasket.length >= 1 ? "basket" : "notBasket"}> */}
         <img onClick={(e)=>
         {navigate("shoe/"+one._id , 

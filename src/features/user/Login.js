@@ -89,7 +89,7 @@ const Login = () => {
    <Button type="submit"  style={{marginBottom:"3vh"}} colored color="blue"> להתחברות</Button>
     </form>
     <b>
-    <div>משתמש חדש? <Link style={{color:"blue",fontWeight:"bold"}}  to="/signUp" > לחץ כאן להרשמה</Link> </div>
+    <div>    משתמש חדש ?     <Link style={{color:"blue",fontWeight:"bold"}}  to="/signUp" >   לחץ כאן להרשמה</Link> </div>
     </b>
     </div>}
     </> );
