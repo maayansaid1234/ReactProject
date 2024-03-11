@@ -92,7 +92,7 @@ const NavBar = () => {
         </Menu.Item>
 
         
-        {userName&&(
+        {(user&&user.role=="USER")&&(
       <Menu.Item  inverted stackable  style=
       {{width:"10%",justifyContent:"center"}}
       

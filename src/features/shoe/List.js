@@ -23,8 +23,11 @@ const List = () => {
     const fetchData = async () => {
         try {
             const response = await getAllShoes(page, selectedCategory === "All" ? "" : selectedCategory);
+            if(response.data.length==0)
+            setPage(p=>p-1);
+           else
             setArr(response.data);
-            console.log("hello");
+           
             let res = await getAmountOfShoes(selectedCategory === "All" ? "" : selectedCategory,"");
             const amountOfPages = (res.data.amount % 30) === 0 ? (res.data.amount) / 30 : Math.floor((res.data.amount) / 30) + 1;
             setFinalPage(amountOfPages);
