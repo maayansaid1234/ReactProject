@@ -32,6 +32,7 @@ const orderSlice = createSlice({
         },
         resetBasket:(state)=>{
             state.basket=[]},
+            
             resetOrderDetails:(state)=>{
                 state.orderDetails=null}
 

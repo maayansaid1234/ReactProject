@@ -5,9 +5,7 @@ import { Outlet } from "react-router-dom";
 import Paper from '@mui/material/Paper';
 import "./listCss.css"
 import ListItem from "./ListItem";
-import ArrowForwardIosTwoToneIcon from '@mui/icons-material/ArrowForwardIosTwoTone';
-import ArrowBackIosTwoToneIcon from '@mui/icons-material/ArrowBackIosTwoTone';
-import { Select, MenuItem, InputLabel, FormControl } from '@mui/material';
+import { Select, MenuItem, InputLabel, FormControl, Pagination ,Box} from '@mui/material';
 import { Button } from "semantic-ui-react";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -17,7 +15,7 @@ const List = () => {
 
     let [arr, setArr] = useState([]);
     let [page, setPage] = useState(1);
-    let [finalPage, setFinalPage] = useState(2);
+    let [finalPage, setFinalPage] = useState(0);
     let [selectedCategory, setSelectedCategory] = useState("All");
 
     const fetchData = async () => {
@@ -102,14 +100,14 @@ const List = () => {
                 </Grid>
             </div>
 
-            <div id="divNextPreviousPage">
-                <div>
-                    {page > 1 && <ArrowBackIosTwoToneIcon  onClick={() => setPage(p => p - 1)} />}
-                </div>
-                <div>
-                    {(arr.length > 1 && page < finalPage) && <ArrowForwardIosTwoToneIcon onClick={() => setPage(p => p + 1)} />}
-                </div>
-            </div>
+           
+            <Box display="flex" justifyContent="center">
+                <Pagination count={finalPage}
+                page={page} 
+                onChange={(event,page)=>{setPage(page)}}
+               />
+                </Box>
+           
 
         
             {arr.length==0&&<Button primary loading></Button>}
