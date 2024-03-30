@@ -17,6 +17,7 @@ import AllOrders from './features/order/AllOrders';
 import AddShoe from "./features/shoe/AddShoe"
 import ProtectedRouteForManager from './protectedRoutes/ProtectedRouteForManager';
 import ProtectedRouteForUser from './protectedRoutes/ProtectedRouteForUser';
+import OrderConfirmation from './features/order/OrderConfirmation';
 
 function App() {
   let navigate=useNavigate();
@@ -65,6 +66,12 @@ function App() {
       <Route path="orderForm"  element={
         <ProtectedRouteForUser>
         <OrderForm/>
+        </ProtectedRouteForUser>
+       } />
+
+<Route path="orderConfirmation"  element={
+        <ProtectedRouteForUser>
+        <OrderConfirmation/>
         </ProtectedRouteForUser>
        } />
 

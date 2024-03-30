@@ -101,12 +101,12 @@ const List = () => {
             </div>
 
            
-            <Box display="flex" justifyContent="center">
-                <Pagination count={finalPage}
-                page={page} 
+           {arr.length!=0&& <Box   display="flex" justifyContent="center">
+                <Pagination color="primary" variant="text" count={finalPage}
+                page={page}
                 onChange={(event,page)=>{setPage(page)}}
                />
-                </Box>
+                </Box>}
            
 
         

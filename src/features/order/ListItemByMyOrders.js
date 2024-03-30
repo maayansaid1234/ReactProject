@@ -25,7 +25,6 @@ const ListItemByMyOrders = ({item}) =>
     <div style={{background:"beige","border":"4px black"
     , boxShadow: "0 0 10px 0px black", height: '100%' }}>
         <h3> {item._id} : קוד הזמנה</h3>
-        <h4>{item.userId} : קוד מזמין </h4>
         <h4>{item.address} : כתובת</h4>
         <h4>{new Date(item.orderDate).toLocaleDateString('en-US', {
     year: 'numeric',

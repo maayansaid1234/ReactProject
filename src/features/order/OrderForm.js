@@ -22,19 +22,9 @@ let {register,handleSubmit,formState:{errors,isValid}}=useForm({mode:"onSubmit",
     if(isValid)
     {
         dispatch(saveOrderDetails(data)) ;
-        addOrder({...data,products:basket},userToken).then(res => {           
+        addOrder({address:data.address,products:basket},userToken).then(res => {           
                dispatch(resetBasket());
-               toast.success(' ! ההזמנה נשלחה בהצלחה ', {
-                position: 'top-center',
-                autoClose: 3000, // מספר המילישני שתוצג ההתראה
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-              }); 
-              setTimeout(()=>{navigate("/shoes")},4000)
-                 
+               navigate(`/orderConfirmation`, { state: { item: res.data } });
               }).catch((err)=> {
                 toast.error(' ארעה שגיאה ', {
                     position: 'top-center',
@@ -81,16 +71,22 @@ let {register,handleSubmit,formState:{errors,isValid}}=useForm({mode:"onSubmit",
            {...register("address" ,{required:{value:true,message:"כתובת היא שדה חובה!"}})}  />
         {errors.address&&<span className="error-message">{errors.address.message}</span>}
    
-        <TextField placeholder="תאריך יעד" type="date"
-           {...register("dueDate" ,{required:{value:true,message:"תאריך יעד הוא שדה חובה!"}})}  />
-        {errors.dueDate&&<span className="error-message">{errors.dueDate.message}</span>}
+        
 
-       
+        <TextField placeholder="מספר כרטיס אשראי" type="number"
+           {...register("creditCardNumber", { required: { value: true, message: "מספר כרטיס אשראי הוא שדה חובה!" } })} />
+{errors.creditCardNumber && <span className="error-message">{errors.creditCardNumber.message}</span>}
+
+<TextField placeholder="תוקף כרטיס (MM/YY)" type="text"
+           {...register("expirationDate", { required: { value: true, message: "תוקף כרטיס הוא שדה חובה!" } })} />
+{errors.expirationDate && <span className="error-message">{errors.expirationDate.message}</span>}
+
+<TextField placeholder=" CVV קוד" type="number"
+           {...register("cvv", { required: { value: true, message: "קוד CVV הוא שדה חובה!" }, minLength: { value: 3, message: "קוד CVV חייב להיות לפחות 3 תווים" }, maxLength: { value: 3, message: "קוד CVV חייב להיות לכל היותר 3 תווים" } })} />
+{errors.cvv && <span className="error-message">{errors.cvv.message}</span>}
 
     <Button Colored color="blue" type="submit">אישור</Button> 
    
-   
-
  
 < Button basic color="blue" onClick={handleSubmit(saveOrderDetailsInState)} >חזרה לחנות</Button> 
  </form>
