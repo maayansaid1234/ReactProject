@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { getAllOrders } from "./orderApi";
 import { useSelector } from "react-redux";
 import ListItem from "./ListItem";
+import ListItemByMyOrders from "./ListItemByMyOrders"
 import { Grid, Paper } from "@mui/material";
 import "./allOrders.css"
 import { Button } from "semantic-ui-react";
@@ -10,7 +11,8 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const AllOrders = () => {
   const [arr, setArr] = useState([]);
-  const token = useSelector((st) => st.user.currentUser.token);
+  const user=useSelector((st) => st.user.currentUser);
+  const token = user.token;
 
  
 
@@ -48,7 +50,8 @@ const AllOrders = () => {
 
   return (
     <>
-      <h1> כל ההזמנות</h1>
+    { user.role=="ADMIN" &&<h1> כל ההזמנות</h1>}
+    {user.role=="USER"   &&<h1> ההזמנות שלי</h1>}
       <div id="allOrders"
      
       >
@@ -74,7 +77,9 @@ const AllOrders = () => {
                   }}
                 >
                   <div style={{ flex: 1 }}>
-                    <ListItem item={item} fetchData={fetchData} />
+
+                   {user.role=="ADMIN"&& <ListItem item={item} fetchData={fetchData} />}
+                   {user.role=="USER"&& <ListItemByMyOrders item={item}  />}
                   </div>
                 </Paper>
               </Grid>

@@ -1,6 +1,5 @@
 import './App.css';
 import 'semantic-ui-css/semantic.min.css';
-import MyOrders from './features/order/MyOrders';
 import { ToastContainer } from 'react-toastify';
 import List from './features/shoe/List';
 import {  useDispatch } from 'react-redux';
@@ -45,9 +44,9 @@ function App() {
 
 
      <Route path='allOrders'  element={
-      <ProtectedRouteForManager>
+      <ProtectedRouteForUser>
       <AllOrders/>
-      </ProtectedRouteForManager>}  />
+      </ProtectedRouteForUser>}  />
     
       
     <Route path="basket"  element={<Basket/>} />
@@ -76,11 +75,7 @@ function App() {
        } />
 
 
-<Route path="myOrders"  element={
-        <ProtectedRouteForUser>
-        <MyOrders/>
-        </ProtectedRouteForUser>
-       } />
+
       
      
        <Route path="editShoe" element={

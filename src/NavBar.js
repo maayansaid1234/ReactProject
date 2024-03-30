@@ -55,18 +55,7 @@ const NavBar = () => {
           </Menu.Item>
         )}
         
-        {user !== null && user.role === 'ADMIN' && (
-           <Menu.Item inverted stackable style=
-           {{width:"10%",justifyContent:"center"}}
-            name="allOrders"
-            as={NavLink}
-            to="/allOrders"
-            activeClassName="active"
-            onClick={() => handleItemClick('/allOrders')}
-          >
-            לכל ההזמנות
-          </Menu.Item>
-        )}
+     
           {(user == null || user.role !== 'ADMIN') && (
           <Menu.Item inverted stackable style={{width:"10%",justifyContent:"center"}}
             name="basket"
@@ -92,18 +81,19 @@ const NavBar = () => {
         </Menu.Item>
 
         
-        {(user&&user.role=="USER")&&(
+        {user&&(
       <Menu.Item  inverted stackable  style=
       {{width:"10%",justifyContent:"center"}}
       
-        name="my orders"
+        name="all orders"
           as={NavLink}
-          to="/myOrders"
+          to="/allOrders"
           activeClassName="active"
           onClick={() => handleItemClick('/myOrders')}>
-   
-      להזמנות שלי 
-        
+   {user.role=="ADMIN" ?<span>
+      לכל ההזמנות </span>
+      :<span>
+       ההזמנות שלי </span>}
         </Menu.Item>)}
 
       
