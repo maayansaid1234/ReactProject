@@ -22,17 +22,19 @@ const OrderConfirmation = () => {
    let arr=item.products
    let navigate=useNavigate();
    
-    return ( <><h1>אישור הזמנה</h1> 
-    <h2> !הזמנתך התקבלה בהצלחה</h2>
-    <h2> :קוד ההזמנה הינו  </h2>
-    <h2> {item._id}</h2>
-    <h2>  : אל הכתובת </h2>
-    <h2> {item.address}</h2>
-    <h2>  סך הכל מוצרים : {sumQty()}</h2>
-    <h2>סך הכל לתשלום :  {sum()}</h2>
-    <h2> המוצרים ישלחו אליך בהקדם האפשרי וכל היותר עד שבועיים מהיום</h2>
-    <h1 > ! תודה שקנית אצלינו</h1>
-    <Button  color="success" variant ="text" onClick={() => navigate("/shoes")}>חזרה לחנות</Button>
+    return ( <>
+    {/* <h1>אישור הזמנה</h1>  */}
+    <h1>  👍🏻 !הזמנתך התקבלה בהצלחה</h1>
+    <h3> :קוד ההזמנה הינו  </h3>
+    <h3> {item._id}</h3>
+    <h3>  : תשלח אל הכתובת </h3>
+    <h3> {item.address}</h3>
+    <h3>  סך הכל מוצרים : {sumQty()}</h3>
+    <h3 > ₪ סך הכל לתשלום :  {sum()} </h3>
+    <Button  color="success" variant ="text" size="large" onClick={() => navigate("/shoes")}>בחזרה לחנות</Button>
+    <h3> המוצרים ישלחו אליך בהקדם האפשרי ולכל היותר עד שבועיים מיום הקניה</h3>
+    <h1 >  😊 ! תודה שקנית אצלינו</h1>
+
 
     </>
     );

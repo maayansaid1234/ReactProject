@@ -15,7 +15,7 @@
   #divBasket{
     overflow-x: auto;
     max-height: 65vh;
-    /* color:palegreen; */
+ /* color:rgb(70, 171, 191) ;  */
   }
 
   @media only screen and (max-width: 1000px) {

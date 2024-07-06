@@ -13,7 +13,7 @@ import 'react-toastify/dist/ReactToastify.css';
 const List = () => {
     
 
-    let [arr, setArr] = useState([]);
+    let [arr, setArr] = useState(null);
     let [page, setPage] = useState(1);
     let [finalPage, setFinalPage] = useState(0);
     let [selectedCategory, setSelectedCategory] = useState("All");
@@ -31,6 +31,7 @@ const List = () => {
             setFinalPage(amountOfPages);
         } catch (err) {
             console.error(err);
+            setArr([]);
             toast.error(' ! הפעולה נכשלה ', {
                 position: 'top-center',
                 autoClose: 2000, // מספר המילישני שתוצג ההתראה
@@ -101,7 +102,7 @@ const List = () => {
             </div>
 
            
-           {arr.length!=0&& <Box   display="flex" justifyContent="center">
+           {(arr&&arr.length!=0)&& <Box   display="flex" justifyContent="center">
                 <Pagination color="primary" variant="text" count={finalPage}
                 page={page}
                 onChange={(event,page)=>{setPage(page)}}
@@ -110,7 +111,7 @@ const List = () => {
            
 
         
-            {arr.length==0&&<Button primary loading></Button>}
+            {!arr&&<Button primary loading></Button>}
         </div>
 
     );

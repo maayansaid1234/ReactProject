@@ -10,7 +10,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const AllOrders = () => {
-  const [arr, setArr] = useState([]);
+  const [arr, setArr] = useState(null);
   const user=useSelector((st) => st.user.currentUser);
   const token = user.token;
 
@@ -21,6 +21,7 @@ const AllOrders = () => {
       let res = await getAllOrders(token);
       setArr(res.data);
     } catch (err) {
+    setArr([])
       toast.error(' ארעה שגיאה ', {
         position: 'top-center',
         autoClose: 2000, // מספר המילישני שתוצג ההתראה
@@ -46,15 +47,14 @@ const AllOrders = () => {
 
   useEffect(() => {
     fetchData();
-  }, []); // <-- Correct syntax for the dependency array
+  },[]); 
 
   return (
     <>
     { user.role=="ADMIN" &&<h1> כל ההזמנות</h1>}
     {user.role=="USER"   &&<h1> ההזמנות שלי</h1>}
-      <div id="allOrders"
+      <div id="allOrders" >
      
-      >
         <Grid container spacing={2} sx={{ width: "100%", minHeight: "100%" }}>
           {arr &&
             arr.length > 0 &&
@@ -86,7 +86,7 @@ const AllOrders = () => {
             ))}
         </Grid>
       </div>
-      {arr.length==0&&<Button color="black" loading></Button>}
+      {!arr&&<Button color="black" loading></Button>}
     
       
     </>

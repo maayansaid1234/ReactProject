@@ -29,7 +29,8 @@ const Login = () => {
     {
       setShowLoading(true);
         login(data).then(res => {           
-                     dispatch(saveUser(res.data));navigate("/shoes")
+                     dispatch(saveUser(res.data));
+                     navigate("/shoes")
               }).catch((err)=> {
                 setShowLoading(false)
                 toast.error('הפעולה נכשלה', {

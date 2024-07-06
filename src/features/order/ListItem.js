@@ -49,8 +49,8 @@ const ListItem = ({item,fetchData}) =>
 
     }
     return (  <>
-    <div style={{background:"beige","border":"4px black"
-    , boxShadow: "0 0 10px 0px black", height: '100%' }}>
+    <div style={{padding:"3px",background:"pink","border":"4px black"
+    , boxShadow: "  0 0 13px 1px lightblue", height: '100%',color:"rgb(70, 171, 191)" }}>
         <h3> {item._id} : קוד הזמנה</h3>
         <h4>{item.userId} : קוד מזמין </h4>
         <h4>{item.address} : כתובת</h4>
@@ -66,7 +66,7 @@ const ListItem = ({item,fetchData}) =>
   })} : תאריך יעד </h4>
      
        
-        {!(item.isDone)&&<Button variant="contained" color="inherit" onClick={sendOrder}>שלח הזמנה</Button>}
+        {!(item.isDone)&&<Button variant="contained" color="info" onClick={sendOrder}>שלח הזמנה</Button>}
     
 
     </div>
