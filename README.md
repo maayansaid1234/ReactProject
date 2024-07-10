@@ -1,6 +1,16 @@
-# Getting Started with Create React App
+# Online Store for Sports Shoes
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Overview
+
+Welcome to our online store for sports shoes! This website provides a platform for browsing and purchasing a wide range of athletic footwear.
+
+## API Server Integration
+
+This site fetches its data from an external API server. It relies on this API for dynamic content and product information. Ensure a stable internet connection for proper functionality.
+
+For more information about the API server used in this project, visit its GitHub repository: [API Server Repository](https://github.com/example/api-server).
 
 ## Available Scripts
 
@@ -37,7 +47,7 @@ If you aren't satisfied with the build tool and configuration choices, you can `
 
 Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However, we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
 ## Learn More
 
